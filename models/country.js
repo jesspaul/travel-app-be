@@ -8,6 +8,7 @@ const citySchema = new Schema({
 }, { timestamps: true });
 
 const countrySchema = new Schema({
+    userId: String,
     name: String,
     date: String,
     mapImagePath: String,
