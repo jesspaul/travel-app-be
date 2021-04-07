@@ -11,6 +11,7 @@ const countrySchema = new Schema({
     userId: String,
     name: String,
     date: String,
+    visited: Boolean,
     mapImagePath: String,
     scenicImagePath: String,
     cities: [citySchema],

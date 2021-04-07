@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 // mount routes
+app.use('/countries', require('./routes/countries'));
 
 // listen on a port
 const port = process.env.PORT || 3001;
