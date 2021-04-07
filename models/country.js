@@ -5,7 +5,7 @@ const citySchema = new Schema({
     name: String,
     date: String,
     details: [String]
-})
+}, { timestamps: true });
 
 const countrySchema = new Schema({
     name: String,
@@ -13,6 +13,6 @@ const countrySchema = new Schema({
     mapImagePath: String,
     scenicImagePath: String,
     cities: [citySchema],
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Country', countrySchema);
