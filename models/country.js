@@ -12,7 +12,7 @@ const countrySchema = new Schema({
     name: String,
     date: String,
     visited: Boolean,
-    mapImagePath: String,
+    flagPath: String,
     scenicImagePath: String,
     cities: [citySchema],
 }, { timestamps: true });
