@@ -21,15 +21,6 @@ async function create(req, res) {
     }
 }
 
-async function update(req, res) {
-    try {
-        
-    } catch (error) {
-        console.log(error);
-        res.status(400).json({ error: 'something went wrong'});
-    }
-}
-
 async function deleteCountry(req, res) {
     try {
         const deletedCountry = await Country.findByIdAndDelete(req.params.id);
@@ -41,9 +32,18 @@ async function deleteCountry(req, res) {
     }
 }
 
+async function update(req, res) {
+    try {
+        
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: 'something went wrong'});
+    }
+}
+
 module.exports = {
     index,
     create,
+    delete: deleteCountry,
     update,
-    delete: deleteCountry
 }
