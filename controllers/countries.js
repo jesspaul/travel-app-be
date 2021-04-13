@@ -13,7 +13,8 @@ async function index(req, res) {
 async function create(req, res) {
     try {
         const country = await Country.create(req.body);
-        res.status(201).json(country);
+        req.query.uid = country.uid;
+        index(req, res);
     } catch (error) {
         console.log(error);
         res.status(400).json({ error: 'something went wrong'});
