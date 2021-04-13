@@ -17,6 +17,7 @@ app.use(cors());
 
 // mount routes
 app.use('/countries', require('./routes/countries'));
+app.use('/cities', require('./routes/cities'));
 
 // listen on a port
 const port = process.env.PORT || 3001;
