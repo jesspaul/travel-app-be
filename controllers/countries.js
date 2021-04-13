@@ -34,7 +34,9 @@ async function deleteCountry(req, res) {
 
 async function update(req, res) {
     try {
-        
+        const updatedCountry = await Country.findByIdAndUpdate(req.params.id, req.body, { new: true});
+        req.query.uid = updatedCountry.uid;
+        index(req, res);
     } catch (error) {
         console.log(error);
         res.status(400).json({ error: 'something went wrong'});
