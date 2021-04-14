@@ -26,6 +26,9 @@ async function create(req, res) {
 async function deleteCity(req, res) {
     try {
         const country = await Country.findById(req.query.countryId);
+        let editCity = country.cities.id(req.params.id);
+        country.cities.pull(editCity);
+        await country.save();
         req.query.uid = country.uid;
         index(req, res);
     } catch (error) {
