@@ -23,7 +23,34 @@ async function create(req, res) {
     }
 }
 
+async function deleteCity(req, res) {
+    try {
+        const country = await Country.findById(req.query.countryId);
+        req.query.uid = country.uid;
+        index(req, res);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: 'something went wrong'});
+    }
+}
+
+async function update(req, res) {
+    try {
+        const country = await Country.findById(req.query.countryId);
+        let editCity = country.cities.id(req.params.id);
+        editCity.set(req.body);
+        await country.save();
+        req.query.uid = country.uid;
+        index(req, res);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: 'something went wrong'});
+    }
+}
+
 module.exports = {
     index,
     create,
+    delete: deleteCity,
+    update
 }
