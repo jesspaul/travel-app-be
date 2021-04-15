@@ -26,7 +26,23 @@ async function create(req, res) {
     }
 }
 
+async function deleteDetail(req, res) {
+    try {
+        const country = await Country.findById(req.query.countryId);
+        let city = country.cities.id(req.query.cityId);
+        let editDetail = city.details.id(req.params.id);
+        city.details.pull(editDetail);
+        await country.save();
+        req.query.uid = country.uid;
+        index(req, res);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: 'something went wrong'});
+    }
+}
+
 module.exports = {
     index,
     create,
+    delete: deleteDetail
 }
