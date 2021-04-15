@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const detailSchema = new Schema({
+    text: String,
+}, { timestamps: true });
+
 const citySchema = new Schema({
     name: String,
     date: String,
-    details: [String]
+    details: [detailSchema]
 }, { timestamps: true });
 
 const countrySchema = new Schema({
